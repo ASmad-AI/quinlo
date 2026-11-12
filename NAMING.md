@@ -69,6 +69,10 @@ any source file outside the allowed docs list.
   `~/workspace/quinlo/`. The reference-study clones remain under
   `~/workspace/research/openforge-study/` (historical artifact; see
   INVENTORY.md).
+- Repository: https://github.com/ASmad-AI/quinlo (public), created
+  and pushed 2026-11-12. All commits were re-attributed to ASmad-AI
+  (GitHub noreply email) before the first push; no commit authored
+  as "OpenForge Builder" was ever published.
 
 ## Deliberately kept: the word "forge" inside the code
 
@@ -98,5 +102,6 @@ the product owner wants the word gone entirely.
    that interpolates `BRANDING.name` (no code change needed — it flows
    from `branding.json`).
 8. Run `npm run lint:branding`, `npm run build`, `npm test`.
-9. Rename the git remote / repository when one is created. **No remote
-   exists yet** — nothing has been pushed under this name.
+9. Rename the git remote / repository when one is created. Done
+   2026-11-12: https://github.com/ASmad-AI/quinlo (public, branch
+   `main`).
