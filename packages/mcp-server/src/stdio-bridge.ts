@@ -2,8 +2,8 @@
  * stdio ↔ Streamable HTTP bridge.
  *
  * Lets MCP clients that only speak stdio (Claude Desktop local configs,
- * many agent harnesses, Ollama-based tool loops) talk to a remote
- * OpenForge MCP server over HTTP. Reads newline-delimited JSON-RPC from
+ * many agent harnesses, Ollama-based tool loops) talk to this platform's
+ * MCP server over HTTP. Reads newline-delimited JSON-RPC from
  * stdin, POSTs each message to the HTTP endpoint, writes the response(s)
  * to stdout.
  *
