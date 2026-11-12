@@ -66,7 +66,7 @@ export function verifyToken<T extends Record<string, unknown>>(
 
 /**
  * The vault key is derived from the operator-supplied master key
- * (OPENFORGE_MASTER_KEY) with scrypt. Ciphertext format:
+ * (QUINLO_MASTER_KEY) with scrypt. Ciphertext format:
  * `v1$<salt hex>$<iv hex>$<authTag hex>$<ciphertext hex>`.
  * A wrong master key fails closed: decryption throws, nothing is returned.
  */

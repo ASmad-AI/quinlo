@@ -1,12 +1,12 @@
-import { BRANDING, defaultProfiles, hashPassword, newId, slugify } from "@openforge/shared";
+import { BRANDING, defaultProfiles, hashPassword, newId, slugify } from "@quinlo/shared";
 import type { Store } from "./store";
 
 /**
  * Development seed: a demo org, user, app, collection, profiles, and a
- * starter frontend, created only when OPENFORGE_SEED_DEMO=true and the
+ * starter frontend, created only when QUINLO_SEED_DEMO=true and the
  * store has no users yet. Never runs in production unless the operator
  * explicitly enables it. The demo password comes from
- * OPENFORGE_DEMO_PASSWORD (default is documented in .env.example and is
+ * QUINLO_DEMO_PASSWORD (default is documented in .env.example and is
  * only suitable for local throwaway use).
  */
 export async function seedDemo(store: Store, demoPassword: string): Promise<{ appId: string; email: string } | null> {

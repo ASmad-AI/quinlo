@@ -1,4 +1,4 @@
-import { assertValid, BRANDING, type JsonSchema } from "@openforge/shared";
+import { assertValid, BRANDING, type JsonSchema } from "@quinlo/shared";
 import type {
   ApplySecurityProfileArgs,
   ConfigureAuthArgs,

@@ -1,1 +1,1 @@
-{"dependencies":{"@openforge/shared":"*"},"description":"Universal MCP server for OpenForge (working title): BYO-AI tools over Streamable HTTP + legacy SSE.","main":"dist/index.js","name":"@openforge/mcp-server","private":true,"types":"dist/index.d.ts","version":"0.1.0"}
+{"dependencies":{"@quinlo/shared":"*"},"description":"Universal MCP server for Quinlo: BYO-AI tools over Streamable HTTP + legacy SSE.","main":"dist/index.js","name":"@quinlo/mcp-server","private":true,"types":"dist/index.d.ts","version":"0.1.0"}

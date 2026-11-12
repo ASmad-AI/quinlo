@@ -9,7 +9,7 @@ import {
   verifyPassword,
   verifyToken,
   type SecurityProfile,
-} from "@openforge/shared";
+} from "@quinlo/shared";
 import type { ServerConfig } from "./config";
 import type { ReqCtx, Principal } from "./http";
 import { newCsrfToken } from "./security";
@@ -231,7 +231,7 @@ export async function createApiKeyRecord(
       throw new ForgeError("validation", `Unknown scope: ${s}`, 400);
     }
   }
-  const plaintext = `ofk_${randomBytes(24).toString("hex")}`;
+  const plaintext = `qlo_${randomBytes(24).toString("hex")}`;
   const now = new Date().toISOString();
   const record = await store.createApiKey({
     app_id: input.appId,

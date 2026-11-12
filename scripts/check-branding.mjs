@@ -1,7 +1,7 @@
 /**
  * Branding lint: the product name may ONLY appear in branding.json, docs,
  * and test fixtures. Source files must import BRANDING from
- * @openforge/shared so a rename is a one-file change (see NAMING.md).
+ * @quinlo/shared so a rename is a one-file change (see NAMING.md).
  * The slug is checked only inside src/ trees (package names, compose
  * files, and docs legitimately contain it).
  */
@@ -59,7 +59,7 @@ for (const file of await walk(root)) {
   if (inSrc) {
     for (const [idx, line] of text.split("\n").entries()) {
       if (!line.includes(SLUG)) continue;
-      if (line.includes("@openforge/")) continue;
+      if (line.includes("@quinlo/")) continue;
       if (line.includes("BRANDING")) continue;
       violations.push(`${rel}:${idx + 1}: literal slug "${SLUG}" (use BRANDING.slug)`);
     }

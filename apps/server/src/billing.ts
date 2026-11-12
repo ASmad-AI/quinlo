@@ -3,7 +3,7 @@ import {
   hmacHex,
   newId,
   verifyStripeSignature,
-} from "@openforge/shared";
+} from "@quinlo/shared";
 import type { ServerConfig } from "./config";
 import type { App, BillingPlan, Store, Subscription } from "./store";
 import type { VaultService } from "./vault";

@@ -36,29 +36,29 @@ function envInt(name: string, fallback: number): number {
 export function loadConfig(env: NodeJS.ProcessEnv = process.env, cwd = process.cwd()): ServerConfig {
   const nodeEnv = env.NODE_ENV ?? "development";
   const devAllowEphemeralKeys = env.DEV_ALLOW_EPHEMERAL_KEYS === "true";
-  let masterKey = env.OPENFORGE_MASTER_KEY ?? "";
+  let masterKey = env.QUINLO_MASTER_KEY ?? "";
   if (!masterKey) {
     if (nodeEnv === "production" && !devAllowEphemeralKeys) {
-      throw new Error("OPENFORGE_MASTER_KEY is required (refusing to start without a vault key)");
+      throw new Error("QUINLO_MASTER_KEY is required (refusing to start without a vault key)");
     }
     masterKey = randomBytes(32).toString("hex");
   }
   return {
-    baseUrl: env.OPENFORGE_BASE_URL ?? "http://localhost:3000",
-    dataDir: env.OPENFORGE_DATA_DIR ?? path.join(cwd, "data"),
+    baseUrl: env.QUINLO_BASE_URL ?? "http://localhost:3000",
+    dataDir: env.QUINLO_DATA_DIR ?? path.join(cwd, "data"),
     databaseUrl: env.DATABASE_URL || undefined,
     devAllowEphemeralKeys,
-    functionTimeoutMs: envInt("OPENFORGE_FUNCTION_TIMEOUT_MS", 5000),
+    functionTimeoutMs: envInt("QUINLO_FUNCTION_TIMEOUT_MS", 5000),
     host: env.HOST ?? "0.0.0.0",
     masterKey,
-    maxUploadBytes: envInt("OPENFORGE_MAX_UPLOAD_BYTES", 10 * 1024 * 1024),
+    maxUploadBytes: envInt("QUINLO_MAX_UPLOAD_BYTES", 10 * 1024 * 1024),
     nodeEnv,
     port: envInt("PORT", 3000),
-    publicDir: env.OPENFORGE_PUBLIC_DIR ?? path.join(cwd, "apps", "web", "dist"),
-    rateLimitMax: envInt("OPENFORGE_RATE_LIMIT_MAX", 300),
-    rateLimitWindowMs: envInt("OPENFORGE_RATE_LIMIT_WINDOW_MS", 60_000),
-    seedDemo: env.OPENFORGE_SEED_DEMO === "true",
-    sessionTtlMs: envInt("OPENFORGE_SESSION_TTL_MS", 7 * 24 * 60 * 60 * 1000),
-    stripeApiBaseUrl: env.OPENFORGE_STRIPE_API_BASE_URL ?? "https://api.stripe.com",
+    publicDir: env.QUINLO_PUBLIC_DIR ?? path.join(cwd, "apps", "web", "dist"),
+    rateLimitMax: envInt("QUINLO_RATE_LIMIT_MAX", 300),
+    rateLimitWindowMs: envInt("QUINLO_RATE_LIMIT_WINDOW_MS", 60_000),
+    seedDemo: env.QUINLO_SEED_DEMO === "true",
+    sessionTtlMs: envInt("QUINLO_SESSION_TTL_MS", 7 * 24 * 60 * 60 * 1000),
+    stripeApiBaseUrl: env.QUINLO_STRIPE_API_BASE_URL ?? "https://api.stripe.com",
   };
 }

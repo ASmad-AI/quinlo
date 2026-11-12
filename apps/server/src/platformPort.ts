@@ -18,7 +18,7 @@ import type {
   RunBuildArgs,
   SetupBillingArgs,
   WriteFileArgs,
-} from "@openforge/mcp-server";
+} from "@quinlo/mcp-server";
 import {
   auditEvent,
   defaultProfiles,
@@ -29,7 +29,7 @@ import {
   slugify,
   validateProfile,
   type SecurityProfile,
-} from "@openforge/shared";
+} from "@quinlo/shared";
 import { hashToken } from "./auth";
 import type { BillingService } from "./billing";
 import { deploySnapshot, previewUrl } from "./deploy";

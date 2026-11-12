@@ -1,4 +1,4 @@
-import type { SecurityProfile } from "@openforge/shared";
+import type { SecurityProfile } from "@quinlo/shared";
 import type { App, BillingPlan, CollectionSchema, StoredRecord } from "./store";
 
 /**

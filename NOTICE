@@ -1,4 +1,4 @@
-OpenForge (working title) — AI App Factory
+Quinlo — AI App Factory
 =============================================
 
 This product is original work, written clean-room from a PRD and public
@@ -19,8 +19,9 @@ assets, logos, mascots, and copy were NOT copied or reused:
   security, and profiles. Behaviour implemented from the PRD and public
   documentation only.
 
-All trademarks belong to their respective owners. This product's name
-is a working title with known collisions; see NAMING.md.
+All trademarks belong to their respective owners. The product name
+was checked for collisions on 2026-11-12; see NAMING.md for the
+findings and remaining cautions.
 
 This product's own code is licensed under the Apache License 2.0; see
 LICENSE. The final license choice still needs confirmation from the

@@ -1,4 +1,4 @@
-import type { AuditEvent, SecurityProfile } from "@openforge/shared";
+import type { AuditEvent, SecurityProfile } from "@quinlo/shared";
 import type { Pool } from "pg";
 import type {
   ApiKey,

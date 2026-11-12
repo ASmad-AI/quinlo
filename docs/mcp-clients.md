@@ -6,7 +6,7 @@ speak stdio. Authentication is a **Bearer API key** created in the
 Studio (Security → API keys). There is no anonymous mode and no OAuth
 dynamic client registration — see the matrix below.
 
-Base URL in the examples: `https://forge.example.com`. Replace it with
+Base URL in the examples: `https://quinlo.example.com`. Replace it with
 your deployment's base URL. The MCP path comes from `branding.json`
 (`mcpPath: /mcp`).
 
@@ -31,10 +31,10 @@ validated when present; stateless requests are accepted.
 ```json
 {
   "mcpServers": {
-    "openforge": {
+    "quinlo": {
       "type": "http",
-      "url": "https://forge.example.com/mcp",
-      "headers": { "Authorization": "Bearer ofk_your_key_here" }
+      "url": "https://quinlo.example.com/mcp",
+      "headers": { "Authorization": "Bearer qlo_your_key_here" }
     }
   }
 }
@@ -43,8 +43,8 @@ validated when present; stateless requests are accepted.
 Claude Code CLI equivalent:
 
 ```sh
-claude mcp add --transport http openforge https://forge.example.com/mcp \
-  --header "Authorization: Bearer ofk_your_key_here"
+claude mcp add --transport http quinlo https://quinlo.example.com/mcp \
+  --header "Authorization: Bearer qlo_your_key_here"
 ```
 
 ## stdio bridge (Claude Desktop, harnesses, Ollama loops)
@@ -58,8 +58,8 @@ no state beyond the MCP session id and never logs the token.
 npm run build
 
 # Run with env config:
-OPENFORGE_MCP_URL=https://forge.example.com/mcp \
-OPENFORGE_MCP_TOKEN=ofk_your_key_here \
+QUINLO_MCP_URL=https://quinlo.example.com/mcp \
+QUINLO_MCP_TOKEN=qlo_your_key_here \
 node packages/mcp-server/dist/stdio-bridge.js
 ```
 
@@ -68,12 +68,12 @@ Claude Desktop config (`claude_desktop_config.json`):
 ```json
 {
   "mcpServers": {
-    "openforge": {
+    "quinlo": {
       "command": "node",
-      "args": ["/path/to/openforge/packages/mcp-server/dist/stdio-bridge.js"],
+      "args": ["/path/to/quinlo/packages/mcp-server/dist/stdio-bridge.js"],
       "env": {
-        "OPENFORGE_MCP_URL": "https://forge.example.com/mcp",
-        "OPENFORGE_MCP_TOKEN": "ofk_your_key_here"
+        "QUINLO_MCP_URL": "https://quinlo.example.com/mcp",
+        "QUINLO_MCP_TOKEN": "qlo_your_key_here"
       }
     }
   }

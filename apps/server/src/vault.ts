@@ -1,4 +1,4 @@
-import { decryptSecret, encryptSecret, ForgeError, newId } from "@openforge/shared";
+import { decryptSecret, encryptSecret, ForgeError, newId } from "@quinlo/shared";
 import type { Store } from "./store";
 
 /**

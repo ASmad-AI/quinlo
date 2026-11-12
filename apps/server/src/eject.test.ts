@@ -42,7 +42,7 @@ describe("eject bundle", () => {
     assert.ok(byPath.get("server/records.jsonl")?.includes('"title":"T"'));
     assert.ok(byPath.get("server/profiles.json")?.includes("Member"));
     assert.ok(byPath.get("frontend/index.html")?.includes("<h1>hi</h1>"));
-    assert.ok(!byPath.get("server/server.mjs")?.includes("openforge"), "ejected server must not depend on the platform");
+    assert.ok(!byPath.get("server/server.mjs")?.includes("quinlo"), "ejected server must not depend on the platform");
   });
 
   test("empty project files produce a buildable React scaffold", () => {

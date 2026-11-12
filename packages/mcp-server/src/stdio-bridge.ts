@@ -8,8 +8,8 @@
  * to stdout.
  *
  * Configuration (environment):
- *   OPENFORGE_MCP_URL    e.g. https://mcp.example.com/mcp (required)
- *   OPENFORGE_MCP_TOKEN  Bearer API key (required)
+ *   QUINLO_MCP_URL    e.g. https://mcp.example.com/mcp (required)
+ *   QUINLO_MCP_TOKEN  Bearer API key (required)
  *
  * The bridge keeps no state beyond the MCP session id returned by
  * `initialize`, which it forwards on later requests. It never logs the
@@ -18,12 +18,12 @@
 
 import * as readline from "node:readline";
 
-const MCP_URL = process.env.OPENFORGE_MCP_URL ?? "";
-const MCP_TOKEN = process.env.OPENFORGE_MCP_TOKEN ?? "";
+const MCP_URL = process.env.QUINLO_MCP_URL ?? "";
+const MCP_TOKEN = process.env.QUINLO_MCP_TOKEN ?? "";
 
 if (!MCP_URL || !MCP_TOKEN) {
   process.stderr.write(
-    "stdio-bridge: OPENFORGE_MCP_URL and OPENFORGE_MCP_TOKEN must both be set.\n",
+    "stdio-bridge: QUINLO_MCP_URL and QUINLO_MCP_TOKEN must both be set.\n",
   );
   process.exit(2);
 }

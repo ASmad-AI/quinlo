@@ -21,5 +21,5 @@ npm run verify:compose
 
 echo ""
 echo "Setup complete."
-echo "  Local dev:  OPENFORGE_MASTER_KEY=\$(openssl rand -hex 32) OPENFORGE_SEED_DEMO=true npm start"
+echo "  Local dev:  QUINLO_MASTER_KEY=\$(openssl rand -hex 32) QUINLO_SEED_DEMO=true npm start"
 echo "  Docker:     docker compose up -d --build   (set secrets in .env first)"

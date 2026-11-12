@@ -12,8 +12,8 @@ import {
   type AccessContext,
   type FieldRule,
   type SecurityProfile,
-} from "@openforge/shared";
-import type { AttributeDef } from "@openforge/mcp-server";
+} from "@quinlo/shared";
+import type { AttributeDef } from "@quinlo/mcp-server";
 import type { AuthService } from "./auth";
 import type { Principal } from "./http";
 import type { App, CollectionSchema, StoredRecord, Store } from "./store";

@@ -1,5 +1,5 @@
 import { createServer } from "node:http";
-import { BRANDING } from "@openforge/shared";
+import { BRANDING } from "@quinlo/shared";
 import { createHttpHandler, createServices, maybeSeed } from "./app";
 import { loadConfig } from "./config";
 import { PostgresStore } from "./postgres";
@@ -13,9 +13,9 @@ async function main(): Promise<void> {
   }
   const services = createServices(config, { store });
   await maybeSeed(services);
-  if (!process.env.OPENFORGE_MASTER_KEY) {
+  if (!process.env.QUINLO_MASTER_KEY) {
     console.warn(
-      "[warn] No OPENFORGE_MASTER_KEY set: using an ephemeral vault key. Secrets will NOT survive restart.",
+      "[warn] No QUINLO_MASTER_KEY set: using an ephemeral vault key. Secrets will NOT survive restart.",
     );
   }
   const handler = createHttpHandler(services);

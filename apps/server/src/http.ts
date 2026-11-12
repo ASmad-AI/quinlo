@@ -1,5 +1,5 @@
 import type { IncomingMessage, ServerResponse } from "node:http";
-import { ForgeError } from "@openforge/shared";
+import { ForgeError } from "@quinlo/shared";
 
 /** Authenticated caller: a signed-in user or a scoped API key. */
 export interface Principal {

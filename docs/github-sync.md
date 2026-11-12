@@ -18,7 +18,7 @@ in logs (scrubbed from error output).
    server-side workspace for the app.
 
 Local (`file://`) remotes are rejected unless
-`OPENFORGE_ALLOW_LOCAL_GIT_REMOTES=true` — a testing escape hatch, not
+`QUINLO_ALLOW_LOCAL_GIT_REMOTES=true` — a testing escape hatch, not
 for production.
 
 ## Push

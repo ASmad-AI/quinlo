@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { createServer, type Server } from "node:http";
 import { describe, test } from "node:test";
-import { hmacHex } from "@openforge/shared";
+import { hmacHex } from "@quinlo/shared";
 import { BillingService } from "./billing";
 import { MemoryStore, type App } from "./store";
 import { VaultService } from "./vault";

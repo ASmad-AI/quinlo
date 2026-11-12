@@ -1,8 +1,8 @@
 import type {
   AuditEvent,
   SecurityProfile,
-} from "@openforge/shared";
-import type { AttributeDef } from "@openforge/mcp-server";
+} from "@quinlo/shared";
+import type { AttributeDef } from "@quinlo/mcp-server";
 
 /* ------------------------------------------------------------------ */
 /* Entity types                                                        */

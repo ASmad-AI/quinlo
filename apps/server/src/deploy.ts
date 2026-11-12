@@ -1,4 +1,4 @@
-import { BRANDING, ForgeError, newId } from "@openforge/shared";
+import { BRANDING, ForgeError, newId } from "@quinlo/shared";
 import type { Deployment, Domain, Store } from "./store";
 
 /**

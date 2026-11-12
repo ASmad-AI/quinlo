@@ -2,7 +2,7 @@ import * as fs from "node:fs/promises";
 import { randomBytes } from "node:crypto";
 import type { IncomingMessage, ServerResponse } from "node:http";
 import * as path from "node:path";
-import { createMcpHttpHandler, type McpHttpHandler } from "@openforge/mcp-server";
+import { createMcpHttpHandler, type McpHttpHandler } from "@quinlo/mcp-server";
 import {
   auditEvent,
   BRANDING,
@@ -13,7 +13,7 @@ import {
   slugify,
   validateProfile,
   type AuditAction,
-} from "@openforge/shared";
+} from "@quinlo/shared";
 import {
   AuthService,
   buildAuthorizationUrl,
@@ -126,7 +126,7 @@ export function createServices(config: ServerConfig, overrides: ServiceOverrides
     store,
     vault,
     config.dataDir,
-    process.env.OPENFORGE_ALLOW_LOCAL_GIT_REMOTES === "true",
+    process.env.QUINLO_ALLOW_LOCAL_GIT_REMOTES === "true",
   );
   const platformPort = new ServerPlatformPort({ billing, config, store, vault, webhooks });
   const mcp = createMcpHttpHandler({
@@ -320,7 +320,7 @@ function registerRoutes(s: Services, overrides: ServiceOverrides): void {
     if (!returnTo.startsWith("/") || returnTo.startsWith("//")) {
       throw new ForgeError("validation", "returnTo must be a relative path", 400);
     }
-    const clientId = process.env[`OPENFORGE_OAUTH_${provider.toUpperCase()}_CLIENT_ID`] ?? "";
+    const clientId = process.env[`QUINLO_OAUTH_${provider.toUpperCase()}_CLIENT_ID`] ?? "";
     if (!clientId) {
       throw new ForgeError("bad_request", `OAuth provider ${provider} is not configured (missing client id)`, 400);
     }
@@ -346,8 +346,8 @@ function registerRoutes(s: Services, overrides: ServiceOverrides): void {
     if (!state || state.provider !== provider) {
       throw new ForgeError("unauthorized", "Invalid or expired OAuth state", 401);
     }
-    const clientId = process.env[`OPENFORGE_OAUTH_${provider.toUpperCase()}_CLIENT_ID`] ?? "";
-    const clientSecret = process.env[`OPENFORGE_OAUTH_${provider.toUpperCase()}_CLIENT_SECRET`] ?? "";
+    const clientId = process.env[`QUINLO_OAUTH_${provider.toUpperCase()}_CLIENT_ID`] ?? "";
+    const clientSecret = process.env[`QUINLO_OAUTH_${provider.toUpperCase()}_CLIENT_SECRET`] ?? "";
     if (!clientId || !clientSecret) {
       throw new ForgeError("bad_request", `OAuth provider ${provider} is not configured`, 400);
     }
@@ -1414,9 +1414,9 @@ export function createHttpHandler(s: Services): (req: IncomingMessage, res: Serv
 
 export async function maybeSeed(s: Services): Promise<void> {
   if (!s.config.seedDemo) return;
-  const demoPassword = process.env.OPENFORGE_DEMO_PASSWORD ?? "demo-password-123";
+  const demoPassword = process.env.QUINLO_DEMO_PASSWORD ?? "demo-password-123";
   const seeded = await seedDemo(s.store, demoPassword);
   if (seeded) {
-    console.log(`[seed] Demo account: ${seeded.email} (password from OPENFORGE_DEMO_PASSWORD)`);
+    console.log(`[seed] Demo account: ${seeded.email} (password from QUINLO_DEMO_PASSWORD)`);
   }
 }

@@ -96,6 +96,6 @@ npm run build
 npm test            # exact counts printed by node:test
 npm run lint:branding
 npm run verify:compose
-OPENFORGE_MASTER_KEY=$(openssl rand -hex 32) \
-OPENFORGE_SEED_DEMO=true npm start   # then walk http://localhost:3000
+QUINLO_MASTER_KEY=$(openssl rand -hex 32) \
+QUINLO_SEED_DEMO=true npm start   # then walk http://localhost:3000
 ```

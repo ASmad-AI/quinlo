@@ -1,12 +1,11 @@
-# OpenForge (Working Title)
+# Quinlo
 
-> **Naming warning:** "OpenForge" is a working title with known
-> collisions — a live US trademark (OPENFORGE Reg. No. 5684232,
-> Openforge LLC), India's government OpenForge platform, and
-> `github.com/openforge`. It is **not** cleared for use, and a rename
-> is likely before any public release. See `NAMING.md`. The name lives
-> in one file (`branding.json`) so renaming is a one-file change plus
-> docs.
+> **Naming:** Quinlo was chosen on 2026-11-12 after a trademark, domain,
+> GitHub, and npm check found no exact software product or live
+> trademark under this name in the US, EU, or India. See `NAMING.md`
+> for the full findings and remaining cautions, and get proper
+> trademark clearance before any commercial filing. The name lives in
+> one file (`branding.json`).
 
 A self-hostable **AI App Factory**: bring your own AI subscription,
 build full-stack SaaS apps through MCP, lock them down with readable
@@ -39,7 +38,7 @@ any of them. See `INVENTORY.md` and `NOTICE`.
 
 ```sh
 cp .env.example .env
-# Edit .env: set OPENFORGE_MASTER_KEY (required) and a demo password if seeding.
+# Edit .env: set QUINLO_MASTER_KEY (required) and a demo password if seeding.
 ./scripts/setup.sh        # installs deps, builds, validates compose YAML
 docker compose up -d      # server + Postgres + Caddy (needs Docker; not verified in CI here)
 ```
@@ -49,8 +48,8 @@ Local development without Docker:
 ```sh
 npm install
 npm run build
-OPENFORGE_MASTER_KEY=$(openssl rand -hex 32) OPENFORGE_SEED_DEMO=true npm start
-# Studio: http://localhost:3000  ·  Demo: demo@openforge.local / demo-password-123
+QUINLO_MASTER_KEY=$(openssl rand -hex 32) QUINLO_SEED_DEMO=true npm start
+# Studio: http://localhost:3000  ·  Demo: demo@quinlo.local / demo-password-123
 # MCP:    http://localhost:3000/mcp (Bearer API key from any app's Security tab)
 ```
 

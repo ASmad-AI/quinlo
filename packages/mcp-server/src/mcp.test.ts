@@ -96,7 +96,7 @@ describe("MCP Streamable HTTP", () => {
     assert.ok(res.headers.get("mcp-session-id"), "session id header present");
     const payload = (await res.json()) as { result: { protocolVersion: string; serverInfo: { name: string } } };
     assert.equal(payload.result.protocolVersion, "2025-06-18");
-    assert.equal(payload.result.serverInfo.name, "openforge");
+    assert.equal(payload.result.serverInfo.name, "quinlo");
   });
 
   test("ping, tools/list, and notifications behave per spec", async () => {

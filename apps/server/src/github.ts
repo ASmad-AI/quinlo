@@ -2,7 +2,7 @@ import { execFile } from "node:child_process";
 import * as fs from "node:fs/promises";
 import * as path from "node:path";
 import { promisify } from "node:util";
-import { BRANDING, ForgeError } from "@openforge/shared";
+import { BRANDING, ForgeError } from "@quinlo/shared";
 import type { Store } from "./store";
 import type { VaultService } from "./vault";
 

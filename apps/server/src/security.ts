@@ -1,5 +1,5 @@
 import { randomBytes, timingSafeEqual } from "node:crypto";
-import { ForgeError } from "@openforge/shared";
+import { ForgeError } from "@quinlo/shared";
 import type { ReqCtx } from "./http";
 
 /* ------------------------------------------------------------------ */

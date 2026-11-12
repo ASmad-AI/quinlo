@@ -1,4 +1,4 @@
-import type { JsonSchema } from "@openforge/shared";
+import type { JsonSchema } from "@quinlo/shared";
 
 /** Caller identity resolved from the MCP Authorization token. */
 export interface McpContext {

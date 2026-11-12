@@ -1,4 +1,4 @@
-import { BRANDING, newId } from "@openforge/shared";
+import { BRANDING, newId } from "@quinlo/shared";
 import { executeTool } from "./tools";
 import type { McpContext, PlatformPort, ToolDefinition } from "./types";
 

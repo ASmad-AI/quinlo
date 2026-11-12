@@ -1,12 +1,12 @@
 # Caddy reverse proxy for the platform itself (Studio + API + MCP + previews).
-# The platform host comes from OPENFORGE_HOST. App custom domains are served
+# The platform host comes from QUINLO_HOST. App custom domains are served
 # by the platform's generated Caddyfile (see the Studio's Deploy tab) when
 # the operator merges it here or runs a second Caddy instance.
 #
 # With a real domain, Caddy provisions TLS automatically. With `localhost`,
 # it serves plain HTTP.
 
-{$OPENFORGE_HOST:localhost} {
+{$QUINLO_HOST:localhost} {
 	encode gzip
 	reverse_proxy server:3000
 

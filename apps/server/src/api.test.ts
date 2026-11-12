@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { after, before, describe, test } from "node:test";
-import { hashPassword, newId } from "@openforge/shared";
+import { hashPassword, newId } from "@quinlo/shared";
 import { readTar } from "./eject";
 import { Client, signupAndLogin, startTestServer, type TestServer } from "./testutil";
 
@@ -182,7 +182,7 @@ describe("HTTP API end-to-end", () => {
     });
     assert.equal(created.status, 201, created.text);
     const { plaintext } = created.body as { plaintext: string };
-    assert.ok(plaintext.startsWith("ofk_"));
+    assert.ok(plaintext.startsWith("qlo_"));
 
     // Read-only key can list but not create.
     assert.equal((await admin.get(`/api/v1/apps/${appId}/records/tasks`, { bearer: plaintext })).status, 200);
@@ -199,7 +199,7 @@ describe("HTTP API end-to-end", () => {
     });
     assert.equal(rpc.status, 200);
     const rpcJson = (await rpc.json()) as { result: { serverInfo: { name: string } } };
-    assert.equal(rpcJson.result.serverInfo.name, "openforge");
+    assert.equal(rpcJson.result.serverInfo.name, "quinlo");
 
     // MCP tool call through the real backend: provision a collection.
     const call = await fetch(`${server.baseUrl}/mcp`, {

@@ -1,4 +1,4 @@
-import { ForgeError, newId, signWebhookBody } from "@openforge/shared";
+import { ForgeError, newId, signWebhookBody } from "@quinlo/shared";
 import type { App, Store, WebhookEndpoint } from "./store";
 
 /**

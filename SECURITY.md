@@ -50,7 +50,7 @@ describes what the code actually does — not aspirations.
 
 - Passwords: scrypt. Sessions: HMAC-SHA256 signed tokens in
   `HttpOnly`, `SameSite=Lax` cookies (`Secure` when the base URL is
-  https). API keys: `ofk_…` prefix, SHA-256 hash stored, scopes
+  https). API keys: `qlo_…` prefix, SHA-256 hash stored, scopes
   enforced (`*`, `records:read/write`, `files:read/write`), revocable,
   last-used tracking.
 - CSRF: double-submit token (`of_csrf` cookie + `x-csrf-token`
@@ -63,7 +63,7 @@ describes what the code actually does — not aspirations.
 
 ### Secrets vault
 
-AES-256-GCM with a scrypt-derived key from `OPENFORGE_MASTER_KEY`.
+AES-256-GCM with a scrypt-derived key from `QUINLO_MASTER_KEY`.
 The server refuses to start in production mode without a master key
 (fail-closed). Ciphertext format is versioned (`v1$…`). Secret values
 are never returned by any API — only names.
@@ -86,7 +86,7 @@ error output. Trade-off, documented honestly: the token is visible in
 the process's memory/environment to the same OS user while git runs,
 and in the git process list only if the header mechanism is bypassed —
 it is not written to disk or logs. Local (`file://`) remotes are
-allowed only when `OPENFORGE_ALLOW_LOCAL_GIT_REMOTES=true`.
+allowed only when `QUINLO_ALLOW_LOCAL_GIT_REMOTES=true`.
 
 ### Preview sandbox
 
@@ -124,7 +124,7 @@ payloads are tested and blocked.
    org scoping on every subscription.
 5. **No OAuth DCR on the MCP server** — API-key auth only. Keys must be
    treated as secrets and rotated if exposed.
-6. **The demo seed** (`OPENFORGE_SEED_DEMO=true`) creates a known
+6. **The demo seed** (`QUINLO_SEED_DEMO=true`) creates a known
    demo account. Never enable it in production; the default demo
    password is documented in `.env.example` and is only suitable for
    local throwaway use.

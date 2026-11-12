@@ -90,7 +90,7 @@ describe("rate limiter + CSRF", () => {
   test("requiresCsrf matrix", () => {
     assert.equal(requiresCsrf(fakeCtx("GET", "/api/v1/apps")), false);
     assert.equal(requiresCsrf(fakeCtx("POST", "/api/v1/apps")), true);
-    assert.equal(requiresCsrf(fakeCtx("POST", "/api/v1/apps", { authorization: "Bearer ofk_x" })), false);
+    assert.equal(requiresCsrf(fakeCtx("POST", "/api/v1/apps", { authorization: "Bearer qlo_x" })), false);
     assert.equal(requiresCsrf(fakeCtx("POST", "/api/v1/webhooks/stripe/app_1")), false);
     assert.equal(requiresCsrf(fakeCtx("POST", "/mcp")), false);
     assert.equal(requiresCsrf(fakeCtx("DELETE", "/api/v1/apps/a")), true);
