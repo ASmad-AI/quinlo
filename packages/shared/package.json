@@ -1,0 +1,1 @@
+{"description":"Shared types and deterministic engines for OpenForge (working title).","main":"dist/index.js","name":"@openforge/shared","private":true,"types":"dist/index.d.ts","version":"0.1.0"}

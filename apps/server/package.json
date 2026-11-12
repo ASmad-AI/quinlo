@@ -1,0 +1,1 @@
+{"dependencies":{"@openforge/mcp-server":"*","@openforge/shared":"*","pg":"^8.13.0"},"description":"OpenForge (working title) backend: auth, databases, storage, functions, realtime, billing, webhooks, Studio hosting.","main":"dist/index.js","name":"@openforge/server","private":true,"types":"dist/index.d.ts","version":"0.1.0"}
