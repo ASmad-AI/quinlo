@@ -1,0 +1,121 @@
+# Single-host deployment (product name lives in branding.json).
+# Sized for a 2 vCPU / 4 GB VPS. See README.md and VERIFICATION.md:
+# this file is YAML-validated only; a live Docker run is still outstanding.
+#
+# Usage:
+#   cp .env.example .env   # set OPENFORGE_MASTER_KEY + Postgres password
+#   docker compose up -d --build
+#   docker compose logs -f server
+
+name: openforge
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: openforge-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-openforge}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+      POSTGRES_USER: ${POSTGRES_USER:-openforge}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-openforge} -d ${POSTGRES_DB:-openforge}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+    deploy:
+      resources:
+        limits:
+          cpus: "0.75"
+          memory: 1G
+    networks:
+      - forge-net
+
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: openforge-server:local
+    container_name: openforge-server
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      NODE_ENV: production
+      PORT: "3000"
+      HOST: "0.0.0.0"
+      DATABASE_URL: postgres://${POSTGRES_USER:-openforge}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB:-openforge}
+      OPENFORGE_MASTER_KEY: ${OPENFORGE_MASTER_KEY:?Set OPENFORGE_MASTER_KEY in .env}
+      OPENFORGE_BASE_URL: ${OPENFORGE_BASE_URL:-http://localhost}
+      OPENFORGE_DATA_DIR: /app/data
+      OPENFORGE_PUBLIC_DIR: /app/apps/web/dist
+      OPENFORGE_OAUTH_GOOGLE_CLIENT_ID: ${OPENFORGE_OAUTH_GOOGLE_CLIENT_ID:-}
+      OPENFORGE_OAUTH_GOOGLE_CLIENT_SECRET: ${OPENFORGE_OAUTH_GOOGLE_CLIENT_SECRET:-}
+      OPENFORGE_OAUTH_GITHUB_CLIENT_ID: ${OPENFORGE_OAUTH_GITHUB_CLIENT_ID:-}
+      OPENFORGE_OAUTH_GITHUB_CLIENT_SECRET: ${OPENFORGE_OAUTH_GITHUB_CLIENT_SECRET:-}
+    volumes:
+      - forge-data:/app/data
+    healthcheck:
+      test: ["CMD-SHELL", "node -e \"fetch('http://127.0.0.1:3000/healthz').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))\""]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: 1G
+    networks:
+      - forge-net
+
+  caddy:
+    image: caddy:2-alpine
+    container_name: openforge-caddy
+    restart: unless-stopped
+    depends_on:
+      - server
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      OPENFORGE_HOST: ${OPENFORGE_HOST:-localhost}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1:2019/metrics"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+    deploy:
+      resources:
+        limits:
+          cpus: "0.25"
+          memory: 256M
+    networks:
+      - forge-net
+
+volumes:
+  postgres-data:
+    name: openforge-postgres-data
+  forge-data:
+    name: openforge-forge-data
+  caddy-data:
+    name: openforge-caddy-data
+  caddy-config:
+    name: openforge-caddy-config
+
+networks:
+  forge-net:
+    name: openforge-net
+
+# Backups: Postgres lives in the `openforge-postgres-data` volume.
+# Snapshot it with `docker exec openforge-db pg_dump -U openforge openforge > backup.sql`
+# on a schedule, and keep OPENFORGE_MASTER_KEY in a password manager —
+# losing it makes vault secrets unrecoverable.

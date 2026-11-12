@@ -1,0 +1,30 @@
+OpenForge (working title) — AI App Factory
+=============================================
+
+This product is original work, written clean-room from a PRD and public
+documentation. It was inspired by the following products, whose code,
+assets, logos, mascots, and copy were NOT copied or reused:
+
+- Appwrite (https://github.com/appwrite/appwrite) — BSD-3-Clause.
+  Inspiration: the shape of a self-hosted backend-as-a-service
+  (auth, databases, storage, functions, realtime, hosting, console).
+- Puter (https://github.com/HeyPuter/puter) — AGPL-3.0 core, Apache-2.0
+  SDK. Inspiration: browser-native hosting and SDK-style developer
+  surfaces. No AGPL code was copied.
+- Puter Builder (https://github.com/HeyPuter/builder) — Apache-2.0.
+  Inspiration: the AI-builder workflow (live preview, click-to-edit,
+  GitHub sync, publish).
+- Apper (https://apper.io) — proprietary backend, public MCP docs.
+  Inspiration: the universal-MCP / bring-your-own-AI model, two-lock
+  security, and profiles. Behaviour implemented from the PRD and public
+  documentation only.
+
+All trademarks belong to their respective owners. This product's name
+is a working title with known collisions; see NAMING.md.
+
+This product's own code is licensed under the Apache License 2.0; see
+LICENSE. The final license choice still needs confirmation from the
+product owner — the PRD listed "Apache 2.0 / AGPL-3.0" ambiguously.
+Apache-2.0 was chosen for the original code because no AGPL code was
+copied (Appwrite BSD-3-Clause and Builder Apache-2.0 are compatible
+with this choice as inspirations only).
